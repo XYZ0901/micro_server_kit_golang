@@ -2,8 +2,8 @@
 ## 日志 zap
 需要定制修改的地方在代码中的TODO
 ## 配置 viper
-### TODO
-## 数据库 mysql
+需要定制修改的地方在代码中的TODO
+## 数据库 mysql and gorm
 ### TODO
 ## nosql redis
 ### TODO
