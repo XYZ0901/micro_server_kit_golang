@@ -13,7 +13,7 @@ import (
 )
 
 var (
-	port   = flag.Int("port", 50051, "The server port")
+	port   = init.Cfg.ServerConfig.Port
 	logger = init.Logger.Sugar()
 )
 
@@ -31,7 +31,7 @@ func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloRe
 func main() {
 
 	flag.Parse()
-	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", *port))
+	lis, err := net.Listen("tcp", fmt.Sprintf(":%d", port))
 	if err != nil {
 		logger.Fatal("failed to listen: %v", err)
 	}

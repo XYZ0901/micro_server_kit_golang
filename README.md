@@ -7,6 +7,8 @@
 ### TODO
 ## nosql redis
 ### TODO
+## 消息队列 rabbitmq
+### TODO
 ## 注册中心 consul
 ### TODO
 ## 配置中心 nacos
