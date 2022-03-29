@@ -4,7 +4,7 @@
 ## 配置 viper
 需要定制修改的地方在代码中的TODO
 ## 数据库 mysql and gorm
-### TODO
+需要定制修改的地方在代码中的TODO
 ## nosql redis
 ### TODO
 ## 消息队列 rabbitmq

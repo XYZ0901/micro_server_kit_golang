@@ -2,3 +2,10 @@ name: "my_server_dev"
 server_config:
   host: "127.0.0.1"
   port: 7788
+mysql_config:
+  user: ""
+  pwd: ""
+  host: ""
+  port: ""
+  dbname: ""
+  arguments: ""

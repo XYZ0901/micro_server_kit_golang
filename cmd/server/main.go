@@ -25,6 +25,7 @@ type server struct {
 // SayHello implements helloworld.GreeterServer
 func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
 	logger.Infof("Received: %v", in.GetName())
+	// init.MysqlDb do something
 	return &pb.HelloReply{Message: "Hello " + in.GetName()}, nil
 }
 
