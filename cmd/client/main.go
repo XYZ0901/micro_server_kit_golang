@@ -31,7 +31,9 @@ func main() {
 	if err != nil {
 		logger.Fatalf("did not connect: %v", err)
 	}
-	defer conn.Close()
+	defer func() {
+		_ = conn.Close()
+	}()
 	c := pb.NewGreeterClient(conn)
 
 	// Contact the server and print out its response.

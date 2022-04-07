@@ -51,6 +51,30 @@ type consulConfig struct {
 	} `yaml:"service"`
 }
 
+type nacosConfig struct {
+	Nacos struct {
+		Server struct {
+			Host        string `yaml:"host"`
+			Port        int    `yaml:"port"`
+			Scheme      string `yaml:"scheme"`
+			ContextPath string `yaml:"context_path"`
+		} `yaml:"server"`
+		Client struct {
+			NamespaceId         string `yaml:"namespace_id"`
+			TimeoutMs           int    `yaml:"timeout_ms"`
+			NotLoadCacheAtStart bool   `yaml:"not_load_cache_at_start"`
+			LogDir              string `yaml:"log_dir"`
+			CacheDir            string `yaml:"cache_dir"`
+			LogLevel            string `yaml:"log_level"`
+		} `yaml:"client"`
+		Data struct {
+			Group  string `yaml:"group"`
+			DataId string `yaml:"data_id"`
+			Type   string `yaml:"type"`
+		}
+	} `yaml:"nacos"`
+}
+
 var (
 	Logger      *zap.Logger
 	Cfg         Config

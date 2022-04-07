@@ -1,24 +1,16 @@
-name: "my_server_dev"
-server_config:
-  host: "127.0.0.1"
-  port: 7788
-mysql_config:
-  user: ""
-  pwd: ""
-  host: ""
-  port: ""
-  dbname: ""
-  arguments: ""
-redis_config:
-  addr: ""
-  pass_word: ""
-rmq_config:
-  user: ""
-  pwd: ""
-  host: ""
-  port: ""
-consul_config:
-  addr: ""
-  service:
-    name: ""
-    tags: ["","",""]
+nacos:
+  server:
+    host: ""
+    port: 8848
+    context_path: ""
+  client:
+    namespace_id: ""
+    timeout_ms: 5000
+    not_load_cache_at_start: true
+    log_dir: ""
+    cache_dir: ""
+    log_level: ""
+  data:
+    group: "dev"
+    data_id: "config_dev.yaml"
+    type: "yaml"
