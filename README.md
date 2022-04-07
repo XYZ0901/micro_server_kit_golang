@@ -10,7 +10,7 @@
 ## 消息队列 rabbitmq
 暂无需要定制的地方
 ## 注册中心 consul
-### TODO
+暂无需要定制的地方
 ## 配置中心 nacos
 ### TODO
 ## 链路追踪 jaeger

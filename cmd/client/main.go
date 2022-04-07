@@ -3,6 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
+	"log"
+	"micro_server_kit_golang/utils"
 	"time"
 
 	"google.golang.org/grpc"
@@ -12,12 +14,18 @@ import (
 )
 
 var (
-	addr   = fmt.Sprintf("%s:%d", init.Cfg.ServerConfig.Host, init.Cfg.ServerConfig.Port)
 	name   = init.Cfg.Name
 	logger = init.Logger.Sugar()
 )
 
 func main() {
+	agentSrvs, err := init.ConsulFilterServices([]string{"tag1", "tag2"}, "serverName")
+	if err != nil {
+		log.Fatalln(err)
+	}
+	as := utils.ChooseServerFromMap(agentSrvs)
+	addr := fmt.Sprintf("%s:%d", as.Address, as.Port)
+
 	// Set up a connection to the server.
 	conn, err := grpc.Dial(addr, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {

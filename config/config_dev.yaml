@@ -17,3 +17,8 @@ rmq_config:
   pwd: ""
   host: ""
   port: ""
+consul_config:
+  addr: ""
+  service:
+    name: ""
+    tags: ["","",""]

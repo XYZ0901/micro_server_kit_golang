@@ -2,6 +2,7 @@ package initialize
 
 import (
 	"github.com/go-redis/redis/v8"
+	consul "github.com/hashicorp/consul/api"
 	"github.com/streadway/amqp"
 	"go.uber.org/zap"
 	"gorm.io/gorm"
@@ -13,6 +14,7 @@ type Config struct {
 	MysqlConfig  mysqlConfig  `yaml:"mysql_config"`
 	RedisConfig  redisConfig  `yaml:"redis_config"`
 	RMqConfig    rmqConfig    `yaml:"rmq_config"`
+	ConsulConfig consulConfig `yaml:"consul_config"`
 }
 
 type serverConfig struct {
@@ -41,12 +43,21 @@ type rmqConfig struct {
 	Port string `yaml:"port"`
 }
 
+type consulConfig struct {
+	Addr    string `yaml:"addr"`
+	Service struct {
+		Tags []string `yaml:"tags"`
+		Name string   `yaml:"name"`
+	} `yaml:"service"`
+}
+
 var (
 	Logger      *zap.Logger
 	Cfg         Config
 	MysqlDb     *gorm.DB
 	RedisClient *redis.Client
 	RmqConn     *amqp.Connection
+	ConsulCli   *consul.Client
 )
 
 func init() {
@@ -55,4 +66,5 @@ func init() {
 	sqlInit()
 	redisInit()
 	rmqInit()
+	consulInit()
 }

@@ -38,6 +38,10 @@ func main() {
 	}
 	s := grpc.NewServer()
 	pb.RegisterGreeterServer(s, &server{})
+	{
+		init.ConsulRegister("ip/addr", port)
+		defer init.ConsulDeregister()
+	}
 	logger.Infof("server listening at %v", lis.Addr())
 	if err := s.Serve(lis); err != nil {
 		logger.Fatalf("failed to serve: %v", err)
