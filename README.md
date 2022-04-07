@@ -6,9 +6,9 @@
 ## 数据库 mysql and gorm
 需要定制修改的地方在代码中的TODO
 ## nosql redis
-### TODO
+暂无需要定制的地方
 ## 消息队列 rabbitmq
-### TODO
+暂无需要定制的地方
 ## 注册中心 consul
 ### TODO
 ## 配置中心 nacos

@@ -9,3 +9,11 @@ mysql_config:
   port: ""
   dbname: ""
   arguments: ""
+redis_config:
+  addr: ""
+  pass_word: ""
+rmq_config:
+  user: ""
+  pwd: ""
+  host: ""
+  port: ""
