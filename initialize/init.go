@@ -91,4 +91,5 @@ func init() {
 	redisInit()
 	rmqInit()
 	consulInit()
+	sentinelInit()
 }

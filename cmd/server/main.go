@@ -2,8 +2,11 @@ package main
 
 import (
 	"context"
+	"errors"
 	"flag"
 	"fmt"
+	sentinel "github.com/alibaba/sentinel-golang/api"
+	"github.com/alibaba/sentinel-golang/core/base"
 	"net"
 
 	init "micro_server_kit_golang/initialize"
@@ -24,7 +27,14 @@ type server struct {
 
 // SayHello implements helloworld.GreeterServer
 func (s *server) SayHello(ctx context.Context, in *pb.HelloRequest) (*pb.HelloReply, error) {
+	// 限流入口
+	e, d := sentinel.Entry("warm_Reject", sentinel.WithTrafficType(base.Inbound))
+	if d != nil {
+		return nil, errors.New("too many request")
+	}
 	logger.Infof("Received: %v", in.GetName())
+	e.Exit()
+	// 限流结束
 	// init.MysqlDb do something
 	return &pb.HelloReply{Message: "Hello " + in.GetName()}, nil
 }
